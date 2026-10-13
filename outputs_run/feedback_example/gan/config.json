@@ -1,0 +1,47 @@
+{
+  "train_args": {
+    "data": "outputs_run\\feedback_example\\data_merged_gan.csv",
+    "mode": "gan",
+    "out": "outputs_run\\feedback_example\\gan",
+    "epochs": 10,
+    "batch_size": 64,
+    "max_len": 64,
+    "n_stages": 3,
+    "latent_dim": 64,
+    "channels": 128,
+    "feat_dim": 64,
+    "lr": 0.0002,
+    "betas": [
+      0.5,
+      0.9
+    ],
+    "n_critic": 5,
+    "gp_lambda": 10.0,
+    "tau": 1.0,
+    "tau_min": 0.5,
+    "augment": 10,
+    "eval_every": 10,
+    "n_eval": 512,
+    "eval_tau": 0.0,
+    "eval_seed": 1234,
+    "filter_preset": "anion",
+    "min_stage_data": 8,
+    "seed": 0,
+    "device": "cpu",
+    "resume": "outputs_run\\gan\\checkpoint.pt"
+  },
+  "eval_config": {
+    "n_samples": 512,
+    "tau": 0.0,
+    "seed": 1234,
+    "sampler": "normal",
+    "filter_preset": "anion"
+  },
+  "stage_train_counts": {
+    "stage2_L64": 926
+  },
+  "n_molecules": 107,
+  "n_augmented": 926,
+  "vocab_size": 29,
+  "torch": "2.14.1+cpu"
+}

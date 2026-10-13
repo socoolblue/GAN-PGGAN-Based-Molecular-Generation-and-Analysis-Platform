@@ -1,0 +1,66 @@
+smiles,canonical,passed,reasons,n_heavy,total_charge,n_fragments,hetero_frac,is_protic_rule,protic_rules_matched
+C,C,False,"too_small(heavy<3); charge=0∉(-1,); hetero_frac<0.25",1,0,1,0.0,False,
+C=C,C=C,False,"too_small(heavy<3); charge=0∉(-1,); hetero_frac<0.25",2,0,1,0.0,False,
+C=CC,C=CC,False,"charge=0∉(-1,); hetero_frac<0.25",3,0,1,0.0,False,
+C=CCO,C=CCO,False,"charge=0∉(-1,)",4,0,1,0.25,True,O-H (hydroxyl/acid)
+C=CCOCC,C=CCOCC,False,"charge=0∉(-1,); hetero_frac<0.25",6,0,1,0.167,False,
+CC,CC,False,"too_small(heavy<3); charge=0∉(-1,); hetero_frac<0.25",2,0,1,0.0,False,
+CC(C)=CCC=O,CC(C)=CCC=O,False,"charge=0∉(-1,); hetero_frac<0.25",7,0,1,0.143,False,
+CC(C)O,CC(C)O,False,"charge=0∉(-1,)",4,0,1,0.25,True,O-H (hydroxyl/acid)
+CC(CF)=[Cl+3]NOOCO,CC(CF)=[Cl+3]NOOCO,False,"charge=3∉(-1,); radical_electrons>0",10,3,1,0.6,True,O-H (hydroxyl/acid); N-H
+CC(O)CCCOF,CC(O)CCCOF,False,"charge=0∉(-1,)",8,0,1,0.375,True,O-H (hydroxyl/acid)
+CC=CCCC(=COCCC)COCOC,CC=CCCC(=COCCC)COCOC,False,"charge=0∉(-1,); hetero_frac<0.25",16,0,1,0.188,False,
+CC=CCCOCCCOOC,CC=CCCOCCCOOC,False,"charge=0∉(-1,)",12,0,1,0.25,False,
+CC=O,CC=O,False,"charge=0∉(-1,)",3,0,1,0.333,False,
+CCC,CCC,False,"charge=0∉(-1,); hetero_frac<0.25",3,0,1,0.0,False,
+CCC(CS)OC,CCC(CS)OC,False,"charge=0∉(-1,)",7,0,1,0.286,True,S-H
+CCCC,CCCC,False,"charge=0∉(-1,); hetero_frac<0.25",4,0,1,0.0,False,
+CCCC(F)CC,CCCC(F)CC,False,"charge=0∉(-1,); hetero_frac<0.25",7,0,1,0.143,False,
+CCCCC(C)CC,CCCCC(C)CC,False,"charge=0∉(-1,); hetero_frac<0.25",8,0,1,0.0,False,
+CCCCCCO,CCCCCCO,False,"charge=0∉(-1,); hetero_frac<0.25",7,0,1,0.143,True,O-H (hydroxyl/acid)
+CCCCF,CCCCF,False,"charge=0∉(-1,); hetero_frac<0.25",5,0,1,0.2,False,
+CCCCO,CCCCO,False,"charge=0∉(-1,); hetero_frac<0.25",5,0,1,0.2,True,O-H (hydroxyl/acid)
+CCCCOC,CCCCOC,False,"charge=0∉(-1,); hetero_frac<0.25",6,0,1,0.167,False,
+CCCN,CCCN,False,"charge=0∉(-1,)",4,0,1,0.25,True,N-H
+CCCO,CCCO,False,"charge=0∉(-1,)",4,0,1,0.25,True,O-H (hydroxyl/acid)
+CCCOC,CCCOC,False,"charge=0∉(-1,); hetero_frac<0.25",5,0,1,0.2,False,
+CCCOCC,CCCOCC,False,"charge=0∉(-1,); hetero_frac<0.25",6,0,1,0.167,False,
+CCCOCOC,CCCOCOC,False,"charge=0∉(-1,)",7,0,1,0.286,False,
+CCCOCOO,CCCOCOO,False,"charge=0∉(-1,)",7,0,1,0.429,True,O-H (hydroxyl/acid)
+CCCOOCCC(COCO)OCO,CCCOOCCC(COCO)OCO,False,"charge=0∉(-1,)",15,0,1,0.4,True,O-H (hydroxyl/acid)
+CCCOOOOOOS,CCCOOOOOOS,False,"charge=0∉(-1,)",10,0,1,0.7,True,S-H
+CCN,CCN,False,"charge=0∉(-1,)",3,0,1,0.333,True,N-H
+CCO,CCO,False,"in_train_set; charge=0∉(-1,)",3,0,1,0.333,True,O-H (hydroxyl/acid)
+CCOC,CCOC,False,"charge=0∉(-1,)",4,0,1,0.25,False,
+CCOCOOCOC,CCOCOOCOC,False,"charge=0∉(-1,)",9,0,1,0.444,False,
+CCOOC,CCOOC,False,"charge=0∉(-1,)",5,0,1,0.4,False,
+CC[N-],CC[N-],False,radical_electrons>0,3,-1,1,0.333,False,
+CC[N-]CC,CC[N-]CC,False,hetero_frac<0.25,5,-1,1,0.2,False,
+CC[P-]O,CC[P-]O,True,,4,-1,1,0.5,True,O-H (hydroxyl/acid)
+CO,CO,False,"in_train_set; too_small(heavy<3); charge=0∉(-1,)",2,0,1,0.5,True,O-H (hydroxyl/acid)
+COC,COC,False,"charge=0∉(-1,)",3,0,1,0.333,False,
+COC(C=CCCCCOO)CCCF,COC(C=CCCCCOO)CCCF,False,"charge=0∉(-1,)",15,0,1,0.267,True,O-H (hydroxyl/acid)
+COCCCC(O)OCO,COCCCC(O)OCO,False,"charge=0∉(-1,)",10,0,1,0.4,True,O-H (hydroxyl/acid)
+COCCCCC[N-]O,COCCCCC[N-]O,True,,9,-1,1,0.333,True,O-H (hydroxyl/acid)
+COOOCOC(O)F,COOOCOC(O)F,False,"charge=0∉(-1,)",9,0,1,0.667,True,O-H (hydroxyl/acid)
+CSCO,CSCO,False,"charge=0∉(-1,)",4,0,1,0.5,True,O-H (hydroxyl/acid)
+C[Cl+3],C[Cl+3],False,"too_small(heavy<3); charge=3∉(-1,); radical_electrons>0",2,3,1,0.5,False,
+C[N+],C[N+],False,"too_small(heavy<3); charge=1∉(-1,); radical_electrons>0",2,1,1,0.5,False,
+C[N-],C[N-],False,too_small(heavy<3); radical_electrons>0,2,-1,1,0.5,False,
+C[N-]F,C[N-]F,True,,3,-1,1,0.667,False,
+F,F,False,"too_small(heavy<3); charge=0∉(-1,)",1,0,1,1.0,False,
+O,O,False,"in_train_set; too_small(heavy<3); charge=0∉(-1,)",1,0,1,1.0,False,
+O=[Cl+3]C(O)OOCOO,O=[Cl+3]C(O)OOCOO,False,"charge=3∉(-1,); radical_electrons>0",9,3,1,0.778,True,O-H (hydroxyl/acid)
+OCCCO,OCCCO,False,"charge=0∉(-1,)",5,0,1,0.4,True,O-H (hydroxyl/acid)
+OCCS,OCCS,False,"charge=0∉(-1,)",4,0,1,0.5,True,O-H (hydroxyl/acid); S-H
+OCO,OCO,False,"charge=0∉(-1,)",3,0,1,0.667,True,O-H (hydroxyl/acid)
+OCS,OCS,False,"charge=0∉(-1,)",3,0,1,0.667,True,O-H (hydroxyl/acid); S-H
+OF,OF,False,"too_small(heavy<3); charge=0∉(-1,)",2,0,1,1.0,True,O-H (hydroxyl/acid)
+OOCCOCOOO,OOCCOCOOO,False,"charge=0∉(-1,)",9,0,1,0.667,True,O-H (hydroxyl/acid)
+OS,OS,False,"too_small(heavy<3); charge=0∉(-1,)",2,0,1,1.0,True,O-H (hydroxyl/acid); S-H
+S,S,False,"too_small(heavy<3); charge=0∉(-1,)",1,0,1,1.0,False,
+[C-]CC,[C-]CC,False,radical_electrons>0; hetero_frac<0.25,3,-1,1,0.0,False,
+[Li+],[Li+],False,"in_train_set; too_small(heavy<3); charge=1∉(-1,)",1,1,1,1.0,False,
+[Li+][CH3],[Li+][CH3],False,"too_small(heavy<3); charge=1∉(-1,); radical_electrons>0",2,1,1,0.5,False,
+[N-],[N-],False,too_small(heavy<3); radical_electrons>0,1,-1,1,1.0,False,
+[P-],[P-],False,too_small(heavy<3); radical_electrons>0,1,-1,1,1.0,False,

@@ -1,0 +1,9 @@
+torch>=2.1
+rdkit>=2023.9
+tensorboard>=2.14
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+joblib

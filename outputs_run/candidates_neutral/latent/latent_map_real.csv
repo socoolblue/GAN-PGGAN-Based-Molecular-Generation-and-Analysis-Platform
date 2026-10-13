@@ -1,0 +1,108 @@
+smiles,name,category,target,cluster,PC1,PC2
+O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,TFSI,anion,,2,-7.9811325,-0.61922646
+O=S(=O)(F)[N-]S(=O)(=O)F,FSI,anion,,0,-0.9032974,-0.73856354
+O=S(=O)(F)[N-]S(=O)(=O)C(F)(F)F,FTFSI,anion,,4,-3.869316,-1.0456562
+O=S(=O)([N-]S(=O)(=O)C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F,BETI,anion,,3,-15.868048,0.8915577
+O=S(=O)([O-])C(F)(F)F,OTf (triflate),anion,,0,-0.026679993,-0.34509277
+F[P-](F)(F)(F)(F)F,PF6,anion,,1,0.44169235,0.6199951
+F[B-](F)(F)F,BF4,anion,,1,1.3306503,0.970274
+[O-][Cl+3]([O-])([O-])[O-],ClO4,anion,,1,1.7945175,-0.0369606
+O=[N+]([O-])[O-],NO3,anion,,1,1.7706718,0.08667374
+O=C1O[B-]2(OC1=O)OC(=O)C(=O)O2,BOB,anion,,0,-2.1796722,-2.4486485
+O=C1O[B-](F)(F)OC1=O,DFOB,anion,,1,0.5049324,-0.5612221
+O=C([O-])C(F)(F)F,TFA,anion,,1,0.8348694,0.33693314
+CS(=O)(=O)[O-],mesylate,anion,,1,1.2180214,0.95023346
+O=S(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,nonaflate,anion,,2,-10.420719,-0.32552338
+N#C[N-]C#N,DCA (dicyanamide),anion,,1,1.8245964,-0.15230179
+N#CC(=[N-])C#N,TCM-like,anion,,1,1.7065277,-0.17660141
+N#C[N-]S(=O)(=O)C(F)(F)F,TFSAM,anion,,0,-0.91822815,-0.95214844
+O=C([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,TSAC,anion,,4,-5.5215187,-1.0141697
+CC(=O)[O-],acetate,anion,,1,1.5968819,0.5639267
+O=C([O-])C(O)C(O)C(=O)O,tartrate,anion,,0,-0.35221863,-1.0442219
+O=C([O-])C(F)(F)C(F)(F)C(=O)[O-],tetrafluorosuccinate,anion,,0,-2.5090942,-1.393507
+O=C([O-])C(F)(F)C(F)(F)C(F)(F)F,heptafluorobutyrate,anion,,4,-3.8161926,-1.209835
+O=S(=O)([O-])CC(F)(F)F,trifluoroethanesulfonate,anion,,0,-0.16883469,-0.6963482
+O=S(=O)([C-](S(=O)(=O)C(F)(F)F)S(=O)(=O)C(F)(F)F)C(F)(F)F,TFSM,anion,,3,-17.319504,1.4971371
+O=S1(=O)[N-]S(=O)(=O)C(F)(F)C1(F)F,cyclic-TFSI (CTFSI),anion,,4,-5.2081947,-1.2704773
+O=S(=O)([N-]S(=O)(=O)C(F)(F)C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)C(F)(F)F,BHFSI,anion,,3,-18.099459,1.6999187
+CCn1cc[n+](C)c1,EMIM,cation,,1,1.6233063,-0.42933846
+CCCCn1cc[n+](C)c1,BMIM,cation,,1,1.5257759,-0.91160583
+CCCC[N+]1(C)CCCC1,Pyr14,cation,,1,1.4213524,-0.5950012
+CCC[N+]1(C)CCCC1,Pyr13,cation,,1,1.4798698,-0.333416
+CCCC[N+]1(C)CCCCC1,Pip14,cation,,1,1.3580589,-0.8900051
+CC[N+](C)(C)CCOC,DEME-like,cation,,1,1.4241066,-0.1312828
+C[N+](C)(C)C,TMA,cation,,1,1.5591393,0.50004196
+CC[N+](CC)(CC)CC,TEA,cation,,1,1.5848923,-0.45373344
+COCC[N+]1(C)CCCC1,"Pyr1,2O1",cation,,1,1.4083824,-0.5524063
+[Li+],Li+,cation,,1,1.6760368,-0.34063148
+O,water,solvent,,1,1.5938644,-0.11348343
+O=C1OCCO1,EC,solvent,,1,1.6611557,0.27411842
+CC1COC(=O)O1,PC,solvent,,1,1.3171196,0.35429382
+COC(=O)OC,DMC,solvent,,1,1.5538368,0.6020527
+CCOC(=O)OC,EMC,solvent,,1,1.5034485,0.5659523
+CCOC(=O)OCC,DEC,solvent,,1,1.4610901,0.44010735
+O=C1OCC(F)O1,FEC,additive,,1,1.3362389,0.27772903
+O=c1occo1,VC,additive,,1,1.8461227,-0.27827835
+COCCOC,DME,solvent,,1,1.752842,0.1427803
+COCCOCCOC,diglyme,solvent,,1,1.7409401,0.13015366
+COCCOCCOCCOC,triglyme,solvent,,1,1.6151886,-0.16423607
+COCCOCCOCCOCCOC,tetraglyme,solvent,,1,1.3791428,-0.85910606
+O=S1(=O)CCCC1,sulfolane,solvent,,1,1.3074684,0.07556534
+CC#N,acetonitrile,solvent,,1,1.7113724,-0.06361008
+CS(C)=O,DMSO,solvent,,1,1.5512924,0.62332344
+CN(C)C=O,DMF,solvent,,1,1.5888405,0.53027916
+OCCO,ethylene glycol,solvent,,1,1.6380615,0.20956802
+OCC(O)CO,glycerol,solvent,,1,1.5622139,0.61548615
+OCCOCCO,diethylene glycol,solvent,,1,1.698082,0.29021645
+OCCOCCOCCO,triethylene glycol,solvent,,1,1.6338577,0.2015953
+C1CCOC1,THF,solvent,,1,1.6657372,0.35964394
+CC1CCOC1,2-MeTHF,solvent,,1,1.6863518,0.28702927
+C1COCO1,"1,3-dioxolane",solvent,,1,1.7019615,0.29151154
+CCOC(C)=O,ethyl acetate,solvent,,1,1.5216827,0.584568
+CCOC(=O)CF,fluoroethyl acetate-like,solvent,,1,1.4343491,0.65171814
+FC(F)C(F)(F)OCC(F)(F)F,HFE (TTE),solvent,,0,-1.1883011,-0.83078766
+FC(F)(F)C(F)(F)COCC(F)(F)C(F)(F)F,HFE-2,solvent,,4,-6.4878883,-0.74809456
+COP(=O)(OC)OC,TMP,additive,,1,1.3776703,0.072286606
+CCOP(=O)(OCC)OCC,TEP,additive,,1,1.0841217,-0.65971565
+CC(=O)N(C)C,DMA,solvent,,1,1.356102,0.59747696
+CN1CCCC1=O,NMP,solvent,,1,1.5998878,0.17683029
+CC(C)=O,acetone,solvent,,1,1.5736275,0.5944309
+CO,methanol,solvent,,1,1.600708,0.008573532
+CCO,ethanol,solvent,,1,1.602623,0.1499939
+NC(N)=O,urea,additive,,1,1.5777512,0.5364456
+CN(C)C(N)=O,DMU,additive,,1,1.3699112,0.4860649
+O=C(O)CO,glycolic acid,additive,,1,1.5350113,0.6738205
+NCCO,ethanolamine,additive,,1,1.6530457,0.14518547
+OCCN(CCO)CCO,triethanolamine,additive,,1,1.4796638,-0.0094566345
+C=CC(=O)OCCOC,methoxyethyl acrylate (PEGA unit),polymer,,1,1.3693428,0.01215744
+C=CC(=O)OCCOCCOC,PEG-acrylate unit,polymer,,1,1.085865,-0.7178345
+COCCOCCOCCOCCOCCOC,pentaglyme,polymer,,1,0.9872513,-1.6324139
+C=CC(N)=O,acrylamide (hydrogel unit),polymer,,1,1.5661621,0.41902733
+C=CC(=O)O,acrylic acid (hydrogel unit),polymer,,1,1.4966011,0.60490036
+O.OCC(O)CO,glycerol hydrate-like,polymer,,1,1.5475883,0.33529282
+C=CO,vinyl alcohol (PVA unit),polymer,,1,1.6632423,0.12494469
+CC(C)(C)CC(=O)O,neo-acid,additive,,1,0.8461571,-0.09739494
+O=S(=O)(O)O,sulfuric acid,additive,,1,1.2081032,0.8625698
+O=P(O)(O)O,phosphoric acid,additive,,1,1.4091644,0.69049263
+OB(O)O,boric acid,additive,,1,1.6391754,0.4260044
+O=C(O)C(F)(F)F,TFA acid,additive,,1,0.7130432,0.65569687
+O=S(=O)(O)C(F)(F)F,triflic acid,additive,,0,-0.15939713,-0.09669304
+CS(=O)(=O)O,MSA,additive,,1,1.1153564,1.0717716
+OCC(F)(F)F,trifluoroethanol,solvent,,1,1.2382278,1.0425568
+OCC(F)(F)C(F)F,tetrafluoropropanol,solvent,,1,0.7458534,0.64341736
+O=S(=O)(O)CCO,isethionic acid,additive,,1,1.0709457,0.51506233
+NCCS(=O)(=O)O,taurine,additive,,1,0.9941101,0.49481773
+OCCN1CCOCC1,hydroxyethyl morpholine,additive,,1,1.633812,-0.05862999
+O=C1CCCCN1,valerolactam,solvent,,1,1.7161293,-0.0004901886
+O=C1CCCO1,GBL,solvent,,1,1.6762123,0.22406006
+O=C1CCCCO1,delta-valerolactone,solvent,,1,1.6598663,0.11812019
+CC(O)C(=O)O,lactic acid,additive,,1,1.2147102,0.8727188
+O=C(O)CCC(=O)O,succinic acid,additive,,1,1.0087395,0.13147545
+O=C(O)C(O)C(O)C(O)C(O)CO,gluconic acid,additive,,0,-1.7040901,-1.287262
+OCC1OC(O)C(O)C(O)C1O,glucose,additive,,0,-0.20733261,-1.0865784
+O=C(O)CS(=O)(=O)O,sulfoacetic acid,additive,,1,0.2317276,-0.20678711
+O=S(=O)(O)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,PFBS acid,additive,,2,-10.568535,-0.1051178
+CCOC(=O)C(F)(F)F,ethyl trifluoroacetate,solvent,,1,0.37130356,0.15903091
+COC(=O)C(F)(F)F,methyl trifluoroacetate,solvent,,1,0.54387283,0.4510002
+O=C(OCC(F)(F)F)C(F)(F)F,TFE-TFA,solvent,,0,-1.5667801,-1.0963726
+CC(C)(C)OC(N)=O,Boc-amine,additive,,1,0.9352951,-0.13984871

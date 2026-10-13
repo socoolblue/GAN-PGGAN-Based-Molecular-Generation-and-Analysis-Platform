@@ -1,0 +1,16 @@
+[
+  {
+    "epoch": 10,
+    "stage": 2,
+    "alpha": 1.0,
+    "L": 64,
+    "n_train_stage": 926,
+    "lossD": -1.8482,
+    "lossG": 14.7228,
+    "validity": 0.0098,
+    "n_valid_unique": 3,
+    "n_not_in_train": 3,
+    "n_filter_pass": 0,
+    "sec": 8
+  }
+]

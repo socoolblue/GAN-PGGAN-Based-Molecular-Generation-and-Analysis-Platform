@@ -1,0 +1,14 @@
+{
+  "code": "OK",
+  "message": "20개 선정 (요청 20).",
+  "score": "heuristic_exploration_score",
+  "score_type": "heuristic_proxy",
+  "n_generated": 4096,
+  "n_valid": 139,
+  "n_valid_unique": 65,
+  "n_not_in_train": 61,
+  "n_filter_pass": 29,
+  "n_embeddable": 29,
+  "n_not_embeddable": 0,
+  "n_selected": 20
+}

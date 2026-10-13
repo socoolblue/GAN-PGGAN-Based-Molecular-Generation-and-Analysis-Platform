@@ -1,0 +1,6 @@
+cluster,sulfonyl,sulfonimide_N-,sulfonate,CF3,fluoro,carbonate,ether,hydroxyl,carboxyl,nitrile,amide,borate,phosphate,anion,cation,quaternary_N,imidazolium,ring,n,categories,examples
+0,0.5,0.08,0.25,0.58,2.58,0.0,0.17,1.25,0.42,0.08,0.0,0.08,0.0,0.67,0.0,0.0,0.0,1.25,12,"anion:7, additive:3, solvent:2",O=S(=O)(F)[N-]S(=O)(=O)F | O=S(=O)([O-])C(F)(F)F | O=C1O[B-]2(OC1=O)OC(=O)C(=O)O2
+1,0.08,0.0,0.08,0.06,0.39,0.07,0.39,0.54,0.12,0.06,0.12,0.02,0.04,0.17,0.13,0.08,0.02,1.24,84,"solvent:35, additive:22, anion:10, cation:10, polymer:7",F[P-](F)(F)(F)(F)F | F[B-](F)(F)F | [O-][Cl+3]([O-])([O-])[O-]
+2,1.33,0.33,0.67,1.33,8.0,0.0,0.0,0.33,0.0,0.0,0.0,0.0,0.0,0.67,0.0,0.0,0.0,0.0,3,"anion:2, additive:1",O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F | O=S(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F)F | O=S(=O)(O)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F
+3,2.33,0.67,0.0,2.33,11.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,3,anion:3,O=S(=O)([N-]S(=O)(=O)C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F | O=S(=O)([C-](S(=O)(=O)C(F)(F)F)S(=O)(=O)C(F)(F)F)C(F)(F)F | O=S(=O)([N-]S(=O)(=O)C(F)(F)C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)C(F)(F)F
+4,1.0,0.4,0.0,1.2,6.2,0.0,0.2,0.0,0.2,0.0,0.2,0.0,0.0,0.8,0.0,0.0,0.0,1.0,5,"anion:4, solvent:1",O=S(=O)(F)[N-]S(=O)(=O)C(F)(F)F | O=C([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F | O=C([O-])C(F)(F)C(F)(F)C(F)(F)F

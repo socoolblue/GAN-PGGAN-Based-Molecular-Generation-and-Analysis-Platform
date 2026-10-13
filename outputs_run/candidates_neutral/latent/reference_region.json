@@ -1,0 +1,17 @@
+{
+  "space": "discriminator_feature_space_PCA",
+  "meaning": "reference-group distribution region (NOT a validated usable region)",
+  "center": [
+    -3.159182548522949,
+    -0.24668671190738678
+  ],
+  "std": [
+    5.921615123748779,
+    0.9638802409172058
+  ],
+  "k": 1.0,
+  "categories": [
+    "anion"
+  ],
+  "n_reference": 26
+}

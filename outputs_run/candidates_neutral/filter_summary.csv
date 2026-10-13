@@ -1,0 +1,9 @@
+reason,count
+PASSED,29
+too_small(heavy<3),16
+hetero_frac<0.2,15
+radical_electrons>0,10
+"charge=-1∉(0,)",9
+in_train_set,4
+"charge=3∉(0,)",3
+"charge=1∉(0,)",3

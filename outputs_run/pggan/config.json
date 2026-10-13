@@ -1,0 +1,49 @@
+{
+  "train_args": {
+    "data": "data\\sample_electrolytes.csv",
+    "mode": "pggan",
+    "out": "outputs_run\\pggan",
+    "epochs": 30,
+    "batch_size": 64,
+    "max_len": 64,
+    "n_stages": 3,
+    "latent_dim": 64,
+    "channels": 128,
+    "feat_dim": 64,
+    "lr": 0.0002,
+    "betas": [
+      0.5,
+      0.9
+    ],
+    "n_critic": 5,
+    "gp_lambda": 10.0,
+    "tau": 1.0,
+    "tau_min": 0.5,
+    "augment": 10,
+    "eval_every": 6,
+    "n_eval": 512,
+    "eval_tau": 0.0,
+    "eval_seed": 1234,
+    "filter_preset": "anion",
+    "min_stage_data": 8,
+    "seed": 0,
+    "device": "cpu",
+    "resume": null
+  },
+  "eval_config": {
+    "n_samples": 512,
+    "tau": 0.0,
+    "seed": 1234,
+    "sampler": "normal",
+    "filter_preset": "anion"
+  },
+  "stage_train_counts": {
+    "stage0_L16": 487,
+    "stage1_L32": 830,
+    "stage2_L64": 918
+  },
+  "n_molecules": 107,
+  "n_augmented": 918,
+  "vocab_size": 29,
+  "torch": "2.14.1+cpu"
+}

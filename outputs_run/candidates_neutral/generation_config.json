@@ -1,0 +1,36 @@
+{
+  "checkpoint": "outputs_run\\gan\\checkpoint.pt",
+  "n_samples": 4096,
+  "top": 20,
+  "tau": 0.6,
+  "sampler": "sobol",
+  "seed": 0,
+  "filter": {
+    "name": "neutral",
+    "min_heavy_atoms": 3,
+    "max_heavy_atoms": 60,
+    "allowed_total_charge": [
+      0
+    ],
+    "allow_radicals": false,
+    "n_fragments": [
+      1
+    ],
+    "min_hetero_frac": 0.2,
+    "require_fragment_charges": null,
+    "exclude_train_set": true,
+    "note": "중성 분자(용매·첨가제): 단일 조각, 전하 0"
+  },
+  "region_categories": [
+    "anion"
+  ],
+  "n_clusters": 5,
+  "note": "후보 생성 조건. 학습 중 평가 조건(checkpoint['eval_config'])과는 별개.",
+  "train_eval_config": {
+    "n_samples": 512,
+    "tau": 0.0,
+    "seed": 1234,
+    "sampler": "normal",
+    "filter_preset": "anion"
+  }
+}

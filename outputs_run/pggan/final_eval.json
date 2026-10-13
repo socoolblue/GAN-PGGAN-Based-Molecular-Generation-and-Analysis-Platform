@@ -1,0 +1,25 @@
+{
+  "n_samples": 512,
+  "tau": 0.0,
+  "eval_seed": 1234,
+  "validity": 0.0293,
+  "n_valid": 15,
+  "n_valid_unique": 11,
+  "uniqueness": 0.7333,
+  "n_not_in_train": 11,
+  "n_filter_pass": 0,
+  "filter_preset": "anion",
+  "valid_unique_smiles": [
+    "CCCC",
+    "CCCCC",
+    "CCCCCCC",
+    "CCCCCCCCC",
+    "CCCCCCCCCC",
+    "CCCCCCCCCCC",
+    "CCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCCCCCCCCCCCCC",
+    "CCCCCCCCCCOO"
+  ]
+}
