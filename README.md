@@ -1,104 +1,107 @@
-# 수계 고체전해질 · 리튬염 분자 생성 GAN / PGGAN
+# GAN PGGAN 기반 수계 전해질용 리튬염 후보 탐색 플랫폼
+GAN·PGGAN-Based Molecular Generation and Analysis Platform
 
-"딥러닝 기반 알고리즘 타당성 조사" 문서의 3개 과업을 그대로 코드로 옮긴 PyTorch 프로젝트입니다.
+본 프로젝트는 수계 전해질용 신규 리튬염 후보 탐색을 지원하기 위한 딥러닝 기반 분자 생성 및 분석 플랫폼입니다. SMILES로 표현된 분자 구조를 학습하여 새로운 구조를 생성하고, 구조 필터링과 벡터 공간 분석을 통해 검토 대상 후보를 선정합니다.
 
-| 문서 항목 | 구현 |
-|---|---|
-| GAN 모델 구축 (Generator / Discriminator) | `src/models.py` – SMILES 시퀀스용 WGAN-GP (Gumbel-Softmax) |
-| PGGAN (Progressive Growing) | 같은 모델을 `--mode pggan` 으로 실행: 시퀀스 길이 16 → 32 → 64 로 단계 성장 + fade-in |
-| 학습 안정성 하이퍼파라미터 튜닝 | `src/tune.py` – lr / n_critic / latent_dim / channels / tau / GP 랜덤 서치 |
-| Tensorboard 실시간 모니터링 | `src/train.py` – loss, stage/alpha, validity·uniqueness·novelty, 생성 SMILES 텍스트 |
-| 중간 레이어를 Latent space 로 활용한 벡터 공간 분석 | `src/latent_analysis.py` – `Discriminator.features()` 임베딩 → PCA / KMeans |
-| 랜덤 입력 벡터 공간 Mapping, 고차원 잠재공간 효율 탐색 | `sobol_latents()` (Sobol 준난수) + `slerp` 보간 |
-| 가용 벡터 공간 범위 설정 | `LatentSpaceAnalyzer.fit(region_categories=...)` – 기준군(음이온) 평균 ± kσ |
-| 구획화·클러스터링, 방향 ↔ 기능기 상관 | `cluster_summary()`, `direction_correlations()`, `interpret_axes()` |
-| 생성 소재 특성 평가 ML 모델 | `src/property_model.py` – RandomForest (디스크립터 + Morgan FP + 기능기) |
-| 소규모 후보군 도출 | `src/filters.py` (설정 가능한 필터·제외 사유·Protic 규칙 표시) + `src/candidates.py` – 탐색용 휴리스틱 점수/실측 ML 예측 구분, 클러스터 다양성 기준 선정 |
-| GAN·PGGAN 동일 조건 평가 | `src/evaluate.py` – 같은 샘플 수·온도·고정 잠재벡터로 유효율 / 유효 고유 수 / 학습데이터 미포함 수 / 필터 통과 수 기록 |
-| 실험 결과 피드백 · 재학습 | `src/feedback.py` – experiments.csv 병합 → 특성모델 재학습 → GAN `--resume` 재학습 |
-| 데이터 증강 | `src/data.py` – SMILES randomization (`--augment N`) |
+GAN과 PGGAN을 공통 조건에서 평가할 수 있으며, 데이터 전처리부터 모델 학습, 분자 생성, 후보 분석 및 결과 저장까지 연결된 연구 환경을 제공합니다. 측정 데이터의 병합과 모델 재학습 기능을 포함하여 실험 결과를 반영하는 반복적 탐색을 지원합니다.
+## 주요 기능
+### 1. GAN PGGAN 기반 분자 생성
+•	GAN: 잠재벡터를 입력받아 SMILES 시퀀스를 생성하고, 생성 구조와 입력 데이터의 분포 차이를 학습합니다.
 
-## 설치
+•	PGGAN: 시퀀스 길이를 16 → 32 → 64로 확장하며 새로운 계층의 출력을 점진적으로 반영합니다.
 
-```bash
+•	학습 방식: Gumbel-Softmax를 이용한 이산 토큰의 미분 가능한 근사와 WGAN-GP 목적함수를 적용합니다.
+
+•	데이터 구성: 토큰화와 SMILES 표기 증강을 수행하고, 각 학습 단계의 길이 안에 완결되는 구조를 사용합니다.
+### 2. 구조 필터링 및 후보 선정
+생성된 구조의 유효성, 중복, 학습 데이터 포함 여부, 전하, 중원자 수, 라디칼 및 구조 조각 수 등을 검사합니다. 필터를 통과한 구조는 점수와 클러스터 정보를 활용하여 선정하고, 후보별 구조·점수 유형·선정 이유를 저장합니다.
+
+측정 데이터가 없는 경우에는 휴리스틱 점수를 학습한 RandomForest 출력을 탐색에 활용합니다. 수치형 목표 데이터가 제공되면 해당 값을 학습하는 특성 모델을 구성할 수 있습니다.
+### 3. 벡터 공간 분석 및 시각화
+•	Generator 입력 잠재공간: Sobol 샘플링과 구면 보간을 활용하여 생성 구조의 유효성과 기능기 변화를 탐색합니다.
+
+•	Discriminator 특징 공간: 중간층 특징 벡터에 PCA와 KMeans를 적용하여 입력 분자와 생성 구조의 분포를 비교합니다.
+
+•	구조적 특성 분석: 주성분 좌표와 기능기·분자 디스크립터의 상관관계를 분석하고, 기준군 분포 영역과 후보 위치를 시각화합니다.
+### 4. 모델 평가 및 데이터 피드백
+동일한 평가 샘플 수, 샘플링 온도 및 고정 잠재벡터로 GAN과 PGGAN을 비교합니다. 학습 설정, 난수 seed, 단계별 데이터 수와 평가 결과를 저장하며, TensorBoard를 통해 학습 과정을 확인할 수 있습니다.
+
+후속 측정 데이터를 기존 데이터와 병합하고 특성 모델 및 생성 모델을 재학습하는 기능을 제공합니다.
+## 파일 구성
+```
+electrolyte_gan/
+├── data/
+│   ├── sample_electrolytes.csv       # 예시 분자 데이터
+│   └── experiments_example.csv      # 피드백용 예시 데이터
+├── src/
+│   ├── data.py                      # 토큰화 및 데이터 증강
+│   ├── models.py                    # GAN·PGGAN 모델
+│   ├── train.py                     # 모델 학습
+│   ├── evaluate.py                  # 공통 조건 평가
+│   ├── filters.py                   # 구조 필터링
+│   ├── latent_analysis.py           # 벡터 공간 분석
+│   ├── property_model.py            # 특성 모델 및 탐색 점수
+│   ├── candidates.py                # 후보 생성·분석·선정
+│   ├── feedback.py                  # 데이터 병합 및 재학습
+│   ├── tune.py                      # 하이퍼파라미터 탐색
+│   └── metrics.py                   # 분자 평가 및 구조 특성
+├── tests/
+│   └── test_candidates.py
+├── electrolyte_gan_research.ipynb   # 단계별 실행 노트북
+├── run_pipeline.py                 # 전체 파이프라인 실행
+├── requirements.txt
+└── README.md
+```
+## 설치 및 환경 설정
+프로젝트 루트에서 필수 라이브러리를 설치합니다.
+```
 pip install -r requirements.txt
 ```
-
-## 빠른 실행 (전체 파이프라인)
-
-```bash
-python data/make_sample_data.py          # 샘플 CSV 생성 (이미 포함되어 있음)
-python run_pipeline.py --epochs 300      # GAN vs PGGAN 학습·비교 → 벡터공간 분석 → 후보 20개
-tensorboard --logdir outputs             # 학습 모니터링
+## 실행 방법
+### 1. 전체 파이프라인 실행
 ```
-
-산출물 (`outputs/`)
-
+python run_pipeline.py --epochs 300
 ```
-gan/, pggan/            checkpoint.pt, history.json, vocab.txt, tb/ (TensorBoard)
-comparison.json         두 모델 최종 지표 비교
-candidates/
-  generated_all.csv     유효·신규 생성 분자 전체 (좌표, 클러스터, 가용범위 여부, 예측 특성, 디스크립터, 기능기)
-  candidates_top.csv    선정된 소규모 후보군  (+ candidates_top.png 구조 그림)
-  latent_map.png        Discriminator feature space 지도 (실제 분자 / 필터 통과 생성 분자 / 기준군 분포 영역)
-  zspace_map.png        Generator z-space 지도
-  filter_results.csv    모든 생성 구조의 필터 통과 여부·제외 이유·Protic 규칙 표시
-  generation_config.json 후보 생성 조건(seed, n, tau, 필터)
-  latent/               cluster_summary.csv, direction_correlations.csv, axis_interpretation.json, region.json
-  property_model.joblib 특성 예측 모델
+GAN·PGGAN 학습과 평가를 수행한 후, 평가 지표에 따라 선택한 모델로 후보 생성 및 분석을 진행합니다.
+### 2. 모델별 학습
 ```
-
-## 개별 단계
-
-```bash
-# 1) 학습
-python -m src.train --mode gan   --epochs 300 --out outputs/gan
-python -m src.train --mode pggan --epochs 300 --out outputs/pggan --n_stages 3 --max_len 64
-# 2) 하이퍼파라미터 튜닝
-python -m src.tune --mode pggan --trials 8 --epochs 120
-# 3) 후보 생성·분석·선정
-python -m src.candidates --ckpt outputs/pggan/checkpoint.pt --n 4096 --top 20
-# 4) 실험 결과 피드백 후 재학습  (data/experiments.csv: smiles,target)
-python -m src.feedback --experiments data/experiments.csv --ckpt outputs/pggan/checkpoint.pt --out outputs/round2
+python -m src.train --mode gan --epochs 300 --out outputs/gan
+python -m src.train --mode pggan --epochs 300 --out outputs/pggan
 ```
-
-## 실제 데이터로 교체하기
-
-`data/sample_electrolytes.csv` 와 같은 열(`smiles, name, category, target`)의 CSV 를 만들고 `--data` 로 지정하면 됩니다.
-
-* `category` : 가용 벡터 공간 범위를 정할 기준군 이름 (`--region_categories anion` 등).
-* `target` : 측정값(이온전도도 등). 값이 있으면 특성 예측 모델이 이 값을 학습하고,
-  없으면 `property_model.proxy_score()` (**탐색용 휴리스틱 점수**, 열 이름 `heuristic_exploration_score`) 를 대신 사용하며 실제 물성 예측값이 아닙니다.
-  실제 연구에서는 반드시 측정 데이터로 대체하세요.
-
-## 설계 메모
-
-* **WGAN-GP + Gumbel-Softmax(straight-through)**: 이산 토큰 생성에서도 Generator 로 기울기가 흐르고,
-  Discriminator 가 "soft vs one-hot" 차이로 쉽게 구분하는 문제를 막습니다.
-* **PGGAN 의 시퀀스 치환**: 이미지의 해상도 대신 SMILES 길이를 단계적으로 늘립니다.
-  각 stage 에서는 그 길이 안에 완결되는 분자만 학습하고(절단 없음), 새 블록은 `alpha` 로 fade-in 됩니다. 단계별 데이터 분포가 달라지는 한계가 있습니다.
-  일반 GAN 모드는 마지막 stage 만 사용하므로 두 모델이 **동일 코드·동일 파라미터 수**로 공정 비교됩니다.
-* **벡터 공간**: Generator 입력 z 공간(탐색용)과 Discriminator 중간층 feature 공간(분석용) 두 가지를 씁니다.
-  실제·생성 분자를 같은 feature 공간에 투영해 클러스터·축 의미·가용 범위를 해석합니다.
-* 포함된 107종 예시 데이터는 학습·생성·분석 절차의 실행을 확인하기 위한 데이터입니다.
-  생성 구조의 유효율은 데이터 구성, 모델, 학습 횟수 및 샘플링 조건에 따라 달라지므로, 예시 실행 결과를 모델의 일반적인 성능으로 해석하지 않아야 합니다.
-  연구 데이터에 적용할 때는 `src/tune.py` 등을 활용하여 학습 조건을 탐색하고, 동일한 평가 조건에서 성능을 확인해야 합니다.
-
-## 노트북
-
-`electrolyte_gan_research.ipynb` — 데이터 로딩부터 학습·평가·후보 필터링·벡터 공간 분석·후보 선정까지 실행하는 연구 노트북 (실행 결과 포함).
-프로젝트 루트에서 `jupyter lab` 실행 후 열면 됩니다. 첫 셀의 `QUICK = True` 는 짧은 학습 설정이며, 이 조건의 유효율·후보 수는 결과 해석에 사용할 수 없습니다. 충분한 학습은 `QUICK = False` 로 실행합니다.
-
-## 테스트
-
-```bash
-python -m pytest tests -q
+### 3. 학습 과정 모니터링
 ```
-필터 스키마(빈 입력 포함)와 후보 선정 수·재현성·입력 검증을 확인합니다.
+tensorboard --logdir outputs
+```
+### 4. 노트북 활용
+electrolyte_gan_research.ipynb를 Jupyter 환경에서 열고 셀을 순서대로 실행하면 데이터 처리부터 후보 선정까지 단계별로 확인할 수 있습니다.
+## 입력 데이터
+CSV 형식의 분자 데이터를 사용합니다.
+| 항목 | 설명 |
+|:---|:---|
+| smiles |	분자 구조의 SMILES 표현 |
+| name	| 분자 이름 |
+| category	| 분자 분류 및 분석 기준군 지정 |
+| target	| 특성 모델 학습에 사용할 수치 |
 
-## 결과 해석 시 유의
+smiles는 필수 항목입니다. target을 사용하는 경우에는 데이터 출처, 물성의 종류, 단위 및 측정 조건을 함께 관리해야 합니다.
+## 출력 지표
+| 지표	| 설명 |
+|:---|:---|
+| validity	| 생성 결과 중 유효한 SMILES의 비율 |
+| n_valid_unique	| 중복을 제거한 유효 구조 수 |
+| n_not_in_train	| 학습 데이터에 포함되지 않은 유효 고유 구조 수 |
+| n_filter_pass	| 설정된 구조 필터를 통과한 고유 구조 수 |
 
-- `heuristic_exploration_score` 는 구조 규칙 기반의 탐색용 점수이며 실제 물성 예측값이 아닙니다. 실측 `target` 학습 시에만 `ml_pred_target` 으로 표기됩니다.
-- 구조 필터 통과는 SMILES 수준의 구조 조건 충족을 의미하며, 합성 가능성이나 수계 전해질 적용 가능성을 검증한 것이 아닙니다.
-- `n_not_in_train` 은 학습 데이터 미포함 여부일 뿐 신규 물질 검증이 아닙니다.
-- `data/experiments_example.csv` 는 예시 데이터이며, 이를 사용한 결과 폴더에는 `DATA_SOURCE.txt` 로 표시됩니다.
+평가 지표와 함께 필터 제외 사유, 후보 선정 근거, 공간 분석 결과 및 실행 조건을 저장합니다. 선정 가능한 후보가 없는 경우에도 결과표와 처리 상태를 기록합니다.
+## 모델 평가 및 후보 탐색 흐름
+SMILES 데이터 입력 → 토큰화 및 데이터 증강 → GAN / PGGAN 학습 → 공통 조건 평가 및 모델 선택 → 분자 생성 및 구조 필터링 → 벡터 공간 분석 및 점수화 → 후보 선정 및 결과 저장
+
+후속 실험 연계: 후보 검토 및 측정 데이터 확보 → 데이터 병합 및 모델 재학습 → 재평가 및 후보 탐색
+## 연구 활용 범위
+본 플랫폼은 분자 구조 생성과 후보 탐색 절차를 구현한 연구용 코드입니다. 기본 필터는 단일 구조 조각과 총 전하 −1 등의 조건을 사용하며, 생성 결과가 리튬을 포함한 완성된 염 구조를 의미하지는 않습니다.
+
+휴리스틱 기반 점수는 실제 물성 예측값과 구분해야 하며, 학습 데이터 미포함 여부는 문헌상 신규성을 의미하지 않습니다. 구조 필터와 기준군 분포 영역은 탐색을 위한 기준으로 사용합니다.
+
+예시 데이터의 실행 결과는 처리 흐름을 확인하기 위한 자료입니다. 생성 후보의 신규성, 합성 가능성, 수중 안정성 및 실제 전해질 성능은 별도의 검토와 실험으로 확인해야 합니다.
+## 라이선스
+이 저장소의 코드는 MIT 라이선스에 따라 제공됩니다. 
